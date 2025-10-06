@@ -5,7 +5,8 @@ import java.util.Random;
 /**
  * A class to hold details of audio tracks.
  * Individual tracks may be played.
- * A song can be selected at random to be played.
+ * Added a functionality so that a song can be selected at random to be played.
+ * Added a functionality so that the track list will all be played once, but shuffled.
  * 
  * @author David J. Barnes and Michael Kölling
  * @author Christian Gorosica
@@ -192,4 +193,22 @@ public class MusicOrganizer
             player.playSample(track.getFilename());
         }
     }
+    
+    /**
+     * Plays all tracks in the track list randomly once.
+     */
+    public void playAllRandomly() {
+        if (tracks.size() > 0) {
+            ArrayList<Track> shuffledTracks = new ArrayList<>(tracks);
+            Collections.shuffle(shuffledTracks);
+            
+            for (Track track: shuffledTracks) {
+                System.out.println("Now playing: " + track.getArtist() + " - "
+                            + track.getTitle());
+                player.playSample(track.getFilename());
+            }
+        } else {
+            System.out.println("No tracks available to play.");
+        }
+    } 
 }
