@@ -202,7 +202,8 @@ public class MusicOrganizer
             ArrayList<Track> shuffledTracks = new ArrayList<>(tracks);
             Collections.shuffle(shuffledTracks);
             
-            for (Track track: shuffledTracks) {
+            for (int i = 0; i < shuffledTracks.size(); i++) {
+                Track track = shuffledTracks.get(i);
                 System.out.println("Now playing: " + track.getArtist() + " - "
                             + track.getTitle());
                 player.playSample(track.getFilename());
